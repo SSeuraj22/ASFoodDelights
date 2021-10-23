@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">AS Food Delights</string>
+    <string name="addCart_button">Add to Cart</string>
+    <string name="compOrder_button">Complete Order</string>
+    <string name="business_name">AS Food Delights</string>
+    <string name="option_heading">Please select an option</string>
+    <string-array name="options">
+        <item>BBQ</item>
+        <item>Fried</item>
+        <item>Baked</item>
+    </string-array>
+    <string name="meat_heading">Please select a meat</string>
+    <string name="chicken">Chicken</string>
+    <string name="lamb">Lamb</string>
+    <string name="fish">Fish</string>
+    <string name="veggie">Neither (Vegetarian)</string>
+
+    <string name="side_heading">Please pick a side/sides</string>
+    <string name="fries_option">Fries</string>
+    <string name="rice_option">Rice</string>
+    <string name="mac_option">Macaroni Salad</string>
+    <string name="potato_option">Potato Salad</string>
+    <string name="salad_option">Fresh Salad</string>
+    <string name="box_size">Please pick a box size</string>
+    <string name="small_box">Small</string>
+    <string name="medium_box">Medium</string>
+    <string name="large_box">Large</string>
+
+
+</resources>
