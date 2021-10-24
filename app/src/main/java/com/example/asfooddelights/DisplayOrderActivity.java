@@ -39,7 +39,7 @@ public class DisplayOrderActivity extends AppCompatActivity implements Serializa
                 ArrayList<String> sidesMenu = orderCus.getSides();
                 for(String s: sidesMenu){
                     if(sidesMenu.get(sidesMenu.size()-1)==s){
-                        list += s + "\n";
+                        list += s + "\n" + "\n";
                     }
                     else{
                         list += s + ", ";
