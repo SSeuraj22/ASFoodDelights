@@ -18,6 +18,9 @@ public class Order implements Serializable {
         this.side = new ArrayList<String>();
     }
 
+    public void addOption(String opt){
+        this.option = opt;
+    }
     public void addMeat(String m){
         this.meat = m;
     }

@@ -10,6 +10,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class AsFoodDelightsActivity extends AppCompatActivity {
 
     @Override
@@ -18,12 +20,21 @@ public class AsFoodDelightsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_as_food_delights);
     }
 
+    Order customerOrder = new Order();
+    ArrayList<Order> custOrderList = new ArrayList<>();
+    int count = 1;
+
+    public AsFoodDelightsActivity(){
+
+    }
+
     public void onClickCustOrder(View view){
         //Get reference to the spinner meat
         Spinner spin = (Spinner) findViewById(R.id.spinner_option);
         //Get the current selected item in the spinner
         String option = String.valueOf(spin.getSelectedItem());
-        Order customerOrder = new Order(option);
+        customerOrder.addOption(option);
+
 
         //RadioButton for meat option
         RadioGroup meatGroup = (RadioGroup) findViewById(R.id.meat);
@@ -89,14 +100,17 @@ public class AsFoodDelightsActivity extends AppCompatActivity {
         if(freshSaladChecked){
             customerOrder.addSide("Fresh Salad");
         }
-        //if(!friesChecked && !riceChecked && !macSaladChecked && !potatoSaladChecked && !freshSaladChecked){
-            //Display a toast
 
-        //}
-
-
-
-
+        if(radioIdMeat!=-1 && radioIdSize!=-1){
+            custOrderList.add(customerOrder);
+            CharSequence addCartText = "Order #" + count + " added to Cart";
+            count = count + 1;
+            int lengthPopUp = Toast.LENGTH_LONG;
+            Toast cartToast = Toast.makeText(this, addCartText, lengthPopUp);
+            cartToast.show();
+        }
 
     }
+
+
 }
