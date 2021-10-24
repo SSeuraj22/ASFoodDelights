@@ -21,12 +21,8 @@ public class AsFoodDelightsActivity extends AppCompatActivity {
     }
 
     Order customerOrder = new Order();
-    ArrayList<Order> custOrderList = new ArrayList<>();
+    ArrayList<Order> custOrderList = new ArrayList<Order>();
     int count = 1;
-
-    public AsFoodDelightsActivity(){
-
-    }
 
     public void onClickCustOrder(View view){
         //Get reference to the spinner meat
@@ -34,7 +30,6 @@ public class AsFoodDelightsActivity extends AppCompatActivity {
         //Get the current selected item in the spinner
         String option = String.valueOf(spin.getSelectedItem());
         customerOrder.addOption(option);
-
 
         //RadioButton for meat option
         RadioGroup meatGroup = (RadioGroup) findViewById(R.id.meat);
@@ -85,29 +80,37 @@ public class AsFoodDelightsActivity extends AppCompatActivity {
         boolean potatoSaladChecked = potatoSalad.isChecked();
         boolean freshSaladChecked = freshSalad.isChecked();
 
-        if(friesChecked){
-            customerOrder.addSide("fries");
+        if(friesChecked==true){
+            String text = "Fries";
+            customerOrder.addSide(text);
         }
-        if(riceChecked){
-            customerOrder.addSide("rice");
+        if(riceChecked==true){
+            String text = "Rice";
+            customerOrder.addSide(text);
         }
-        if(macSaladChecked){
-            customerOrder.addSide("Macaroni Salad");
+        if(macSaladChecked==true){
+            String text = "Macaroni Salad";
+            customerOrder.addSide(text);
         }
-        if(potatoSaladChecked){
-            customerOrder.addSide("Potato Salad");
+        if(potatoSaladChecked==true){
+            String text = "Potato Salad";
+            customerOrder.addSide(text);
         }
-        if(freshSaladChecked){
-            customerOrder.addSide("Fresh Salad");
+        if(freshSaladChecked==true){
+            String text = "Fresh Salad";
+            customerOrder.addSide(text);
         }
 
         if(radioIdMeat!=-1 && radioIdSize!=-1){
-            custOrderList.add(customerOrder);
-            CharSequence addCartText = "Order #" + count + " added to Cart";
-            count = count + 1;
-            int lengthPopUp = Toast.LENGTH_LONG;
-            Toast cartToast = Toast.makeText(this, addCartText, lengthPopUp);
-            cartToast.show();
+            if(customerOrder!=null){
+                custOrderList.add(customerOrder);
+                CharSequence addCartText = "Order #" + count + " added to Cart";
+                count = count + 1;
+                int lengthPopUp = Toast.LENGTH_LONG;
+                Toast cartToast = Toast.makeText(this, addCartText, lengthPopUp);
+                cartToast.show();
+            }
+
         }
 
     }
