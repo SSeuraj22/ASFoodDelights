@@ -160,7 +160,7 @@ public class AsFoodDelightsActivity extends AppCompatActivity implements Seriali
             }
         }
 
-        Intent in = new Intent(this, DisplayOrderActivity.class);
+        Intent in = new Intent(this, CompleteOrderActivity.class);
         in.putExtra("ORDERS", (Serializable) custOrderList);
         startActivity(in);
     }

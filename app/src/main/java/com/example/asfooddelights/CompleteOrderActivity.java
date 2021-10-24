@@ -4,22 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class DisplayOrderActivity extends AppCompatActivity implements Serializable {
+public class CompleteOrderActivity extends AppCompatActivity implements Serializable {
     public static final ArrayList<Order> ORDERS = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_order);
+        setContentView(R.layout.activity_complete_order);
         Intent in2 = getIntent();
         ArrayList<Order> cOrderList = (ArrayList<Order>) in2.getSerializableExtra("ORDERS");
         String list = "";
@@ -46,8 +42,6 @@ public class DisplayOrderActivity extends AppCompatActivity implements Serializa
                     }
 
                 }
-
-
                 orderView.setText(list);
             }
         }

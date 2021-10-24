@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ASBBQDelights">
         <activity
-            android:name=".DisplayOrderActivity"
+            android:name=".CompleteOrderActivity"
             android:exported="true" />
         <activity
             android:name=".AsFoodDelightsActivity"
