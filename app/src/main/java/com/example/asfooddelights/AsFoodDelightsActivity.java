@@ -33,6 +33,7 @@ public class AsFoodDelightsActivity extends AppCompatActivity implements Seriali
     Order customerOrder = new Order();
     ArrayList<Order> custOrderList = new ArrayList<Order>();
     int count = 1;
+    String pastOrderList = "";
 
     public void onClickCartOrder(View view){
         //Get reference to the spinner meat
@@ -121,6 +122,7 @@ public class AsFoodDelightsActivity extends AppCompatActivity implements Seriali
                 cartToast.show();
             }
         }
+        pastOrderList = pastOrderList + customerOrder.toString() + "\n" + "\n";
         customerOrder = new Order();
     }
 
@@ -168,8 +170,9 @@ public class AsFoodDelightsActivity extends AppCompatActivity implements Seriali
     }
 
     public void onClickDisplayPastOrder(View view){
-
-
+        Intent pOrders = new Intent(this, DisplayPastOrderActivity.class);
+        pOrders.putExtra(DisplayPastOrderActivity.PAST_ORDER, pastOrderList);
+        startActivity(pOrders);
     }
 
 

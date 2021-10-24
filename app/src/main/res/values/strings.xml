@@ -28,6 +28,7 @@
     <string name="large_box">Large</string>
     <string name="order_details">Order Details</string>
     <string name="display_order">Display Order</string>
+    <string name="past_orders">Past Order Details</string>
 
 
 </resources>

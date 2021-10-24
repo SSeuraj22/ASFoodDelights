@@ -49,11 +49,11 @@ public class CompleteOrderActivity extends AppCompatActivity implements Serializ
         }
     }
 
-    public void onClickWhatsapp(View view){
+    public void onClicktoWhatsapp(View view){
         Intent inWhatsapp = new Intent(Intent.ACTION_SEND);
         inWhatsapp.setType("text/plain");
-        inWhatsapp.putExtra(Intent.EXTRA_TEXT, list);
         inWhatsapp.setPackage("com.whatsapp");
+        inWhatsapp.putExtra(Intent.EXTRA_TEXT, list);
         startActivity(inWhatsapp);
 
     }

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ASBBQDelights">
         <activity
+            android:name=".DisplayPastOrderActivity"
+            android:exported="true" />
+        <activity
             android:name=".CompleteOrderActivity"
             android:exported="true" />
         <activity
