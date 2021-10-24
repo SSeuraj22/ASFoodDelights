@@ -12,13 +12,17 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class AsFoodDelightsActivity extends AppCompatActivity {
+public class AsFoodDelightsActivity extends AppCompatActivity implements Serializable {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,22 +122,45 @@ public class AsFoodDelightsActivity extends AppCompatActivity {
             }
         }
     }
+
     //To serialize object
-    String filename = "customerorder.bin";
+    String filename = "customerorder.ser";
+    File f = new File(filename);
+    FileOutputStream outputFile = null;
+    ObjectOutputStream outputObject = null;
+
     {
         try {
-            FileOutputStream outputFile = new FileOutputStream(filename);
-            ObjectOutputStream outputObject  = new ObjectOutputStream(outputFile);
+            outputFile = new FileOutputStream(filename);
+            outputObject  = new ObjectOutputStream(outputFile);
             outputObject.writeObject(custOrderList);
             outputObject.close();
-            outputFile.close();
+            //outputFile.close();
         } catch (IOException as) {
             as.printStackTrace();
         }
     }
+
     public void onClickDisplayOrder(View view){
+        ArrayList<Order> cOrderList;
+        FileInputStream inputFile = null;
+        ObjectInputStream inputObject = null;
+        {
+            try {
+                inputFile = new FileInputStream(filename);
+                inputObject = new ObjectInputStream(inputFile);
+                custOrderList = (ArrayList<Order>) inputObject.readObject();
+                inputObject.close();
+                //inputFile.close();
+            } catch (IOException as) {
+                as.printStackTrace();
+            } catch (ClassNotFoundException sa) {
+                sa.printStackTrace();
+            }
+        }
+
         Intent in = new Intent(this, DisplayOrderActivity.class);
-        in.putExtra(DisplayOrderActivity.FILE_NAME, filename);
+        in.putExtra("ORDERS", (Serializable) custOrderList);
         startActivity(in);
     }
 

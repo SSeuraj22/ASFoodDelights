@@ -36,6 +36,19 @@ public class Order implements Serializable {
         return this.boxSize;
     }
 
+    @Override
+    public String toString(){
+        ArrayList<String> sidesList = getSides();
+        String st = "Option: " + this.option + "\n" +
+                "Meat: " + this.meat + "\n" +
+                "Box Side: " + this.boxSize + "\n" +
+                "Sides: ";
+        for(String s: sidesList){
+            st = st + s + " ";
+        }
+        return st;
+    }
+
 
 
 }
