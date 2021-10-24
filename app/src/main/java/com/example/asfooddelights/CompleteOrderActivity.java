@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 
 public class CompleteOrderActivity extends AppCompatActivity implements Serializable {
     public static final ArrayList<Order> ORDERS = null;
+    String list = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +20,7 @@ public class CompleteOrderActivity extends AppCompatActivity implements Serializ
         setContentView(R.layout.activity_complete_order);
         Intent in2 = getIntent();
         ArrayList<Order> cOrderList = (ArrayList<Order>) in2.getSerializableExtra("ORDERS");
-        String list = "";
+
         int sizeOrderList = cOrderList.size();
         int count = 1;
         TextView orderView = (TextView) findViewById(R.id.view_Order);
@@ -45,6 +47,15 @@ public class CompleteOrderActivity extends AppCompatActivity implements Serializ
                 orderView.setText(list);
             }
         }
+    }
+
+    public void onClickWhatsapp(View view){
+        Intent inWhatsapp = new Intent(Intent.ACTION_SEND);
+        inWhatsapp.setType("text/plain");
+        inWhatsapp.putExtra(Intent.EXTRA_TEXT, list);
+        inWhatsapp.setPackage("com.whatsapp");
+        startActivity(inWhatsapp);
+
     }
 
 

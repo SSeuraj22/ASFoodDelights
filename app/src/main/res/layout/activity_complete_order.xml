@@ -52,6 +52,7 @@
             android:backgroundTint="@color/orange"
             android:text="@string/send_button"
             android:textColor="@color/black"
+            android:onClick="onClickWhatsapp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
