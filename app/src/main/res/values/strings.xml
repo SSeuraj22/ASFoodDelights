@@ -13,7 +13,7 @@
     <string name="chicken">Chicken</string>
     <string name="lamb">Lamb</string>
     <string name="fish">Fish</string>
-    <string name="veggie">Neither (Vegetarian)</string>
+    <string name="veggie">Vegetarian</string>
 
     <string name="side_heading">Please pick a side/sides</string>
     <string name="fries_option">Fries</string>

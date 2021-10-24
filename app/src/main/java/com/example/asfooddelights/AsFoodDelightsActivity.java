@@ -10,7 +10,14 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
+
 
 public class AsFoodDelightsActivity extends AppCompatActivity {
 
@@ -110,9 +117,23 @@ public class AsFoodDelightsActivity extends AppCompatActivity {
                 Toast cartToast = Toast.makeText(this, addCartText, lengthPopUp);
                 cartToast.show();
             }
-
         }
+    }
 
+    //Create a file
+    File output = new File("customerorder.ser");
+
+    //To serialize object
+    {
+        try {
+            FileOutputStream outputFile = new FileOutputStream("customerorder.ser");
+            ObjectOutputStream outputObject  = new ObjectOutputStream(outputFile);
+            outputObject.writeObject(custOrderList);
+            outputObject.close();
+            outputFile.close();
+        } catch (IOException as) {
+            as.printStackTrace();
+        }
     }
 
 
