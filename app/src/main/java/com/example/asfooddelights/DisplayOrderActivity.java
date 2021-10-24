@@ -24,12 +24,30 @@ public class DisplayOrderActivity extends AppCompatActivity implements Serializa
         ArrayList<Order> cOrderList = (ArrayList<Order>) in2.getSerializableExtra("ORDERS");
         String list = "";
         int sizeOrderList = cOrderList.size();
+        int count = 1;
         TextView orderView = (TextView) findViewById(R.id.view_Order);
         for(Order orderCus: cOrderList){
-            if(orderCus!=null){
-                list += "ORDER #" + sizeOrderList + "\n";
+            if(orderCus!=null && count<=sizeOrderList){
                 String opt = orderCus.getOption();
-                list = list + "Option: " + opt + "\n";
+                String meat = orderCus.getMeat();
+                String box_size = orderCus.getBoxSize();
+                list += "ORDER #" + count + "\n" +
+                "Option: " + opt + "\n" +
+                "Meat: " + meat + "\n" +
+                "Side/s: ";
+                count++;
+                ArrayList<String> sidesMenu = orderCus.getSides();
+                for(String s: sidesMenu){
+                    if(sidesMenu.get(sidesMenu.size()-1)==s){
+                        list += s + "\n";
+                    }
+                    else{
+                        list += s + ", ";
+                    }
+
+                }
+
+
                 orderView.setText(list);
             }
         }
