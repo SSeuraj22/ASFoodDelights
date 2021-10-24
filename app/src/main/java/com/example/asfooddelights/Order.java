@@ -39,12 +39,19 @@ public class Order implements Serializable {
     @Override
     public String toString(){
         ArrayList<String> sidesList = getSides();
+        int size = sidesList.size();
         String st = "Option: " + this.option + "\n" +
                 "Meat: " + this.meat + "\n" +
                 "Box Side: " + this.boxSize + "\n" +
-                "Sides: ";
+                "Side/s: ";
         for(String s: sidesList){
-            st = st + s + " ";
+            if(sidesList.get(size-1)==s){
+                st = st + s + "\n";
+            }
+            else{
+                st = st + s + ", ";
+            }
+
         }
         return st;
     }

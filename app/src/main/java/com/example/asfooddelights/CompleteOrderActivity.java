@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -54,6 +55,15 @@ public class CompleteOrderActivity extends AppCompatActivity implements Serializ
         inWhatsapp.setType("text/plain");
         inWhatsapp.setPackage("com.whatsapp");
         inWhatsapp.putExtra(Intent.EXTRA_TEXT, list);
+
+        //Is whatsapp installed on the device?
+        if(inWhatsapp.resolveActivity(getPackageManager()) == null){
+            CharSequence message = "Need to install Whatsapp first...";
+            int lengthPopUp = Toast.LENGTH_LONG;
+            Toast messageToast = Toast.makeText(this, message, lengthPopUp);
+            messageToast.show();
+            return;
+        }
         startActivity(inWhatsapp);
 
     }
