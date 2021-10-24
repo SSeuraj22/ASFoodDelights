@@ -2,6 +2,7 @@ package com.example.asfooddelights;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -10,12 +11,10 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.io.File;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -36,7 +35,7 @@ public class AsFoodDelightsActivity extends AppCompatActivity {
         Spinner spin = (Spinner) findViewById(R.id.spinner_option);
         //Get the current selected item in the spinner
         String option = String.valueOf(spin.getSelectedItem());
-        customerOrder.addOption(option);
+        customerOrder.setOption(option);
 
         //RadioButton for meat option
         RadioGroup meatGroup = (RadioGroup) findViewById(R.id.meat);
@@ -53,7 +52,7 @@ public class AsFoodDelightsActivity extends AppCompatActivity {
         else{//a radio button was selected
             RadioButton bMeat = findViewById(radioIdMeat);
             String meatText = bMeat.getText().toString();
-            customerOrder.addMeat(meatText);
+            customerOrder.setMeat(meatText);
         }
 
         //RadioButton for size of box
@@ -71,7 +70,7 @@ public class AsFoodDelightsActivity extends AppCompatActivity {
         else{//a radio button was selected
             RadioButton bsSize = findViewById(radioIdSize);
             String sizeText = bsSize.getText().toString();
-            customerOrder.addBoxSize(sizeText);
+            customerOrder.setBoxSize(sizeText);
         }
 
         //For Checkbox
@@ -89,23 +88,23 @@ public class AsFoodDelightsActivity extends AppCompatActivity {
 
         if(friesChecked==true){
             String text = "Fries";
-            customerOrder.addSide(text);
+            customerOrder.setSide(text);
         }
         if(riceChecked==true){
             String text = "Rice";
-            customerOrder.addSide(text);
+            customerOrder.setSide(text);
         }
         if(macSaladChecked==true){
             String text = "Macaroni Salad";
-            customerOrder.addSide(text);
+            customerOrder.setSide(text);
         }
         if(potatoSaladChecked==true){
             String text = "Potato Salad";
-            customerOrder.addSide(text);
+            customerOrder.setSide(text);
         }
         if(freshSaladChecked==true){
             String text = "Fresh Salad";
-            customerOrder.addSide(text);
+            customerOrder.setSide(text);
         }
 
         if(radioIdMeat!=-1 && radioIdSize!=-1){
@@ -119,14 +118,11 @@ public class AsFoodDelightsActivity extends AppCompatActivity {
             }
         }
     }
-
-    //Create a file
-    File output = new File("customerorder.ser");
-
     //To serialize object
+    String filename = "customerorder.bin";
     {
         try {
-            FileOutputStream outputFile = new FileOutputStream("customerorder.ser");
+            FileOutputStream outputFile = new FileOutputStream(filename);
             ObjectOutputStream outputObject  = new ObjectOutputStream(outputFile);
             outputObject.writeObject(custOrderList);
             outputObject.close();
@@ -135,6 +131,12 @@ public class AsFoodDelightsActivity extends AppCompatActivity {
             as.printStackTrace();
         }
     }
+    public void onClickDisplayOrder(View view){
+        Intent in = new Intent(this, DisplayOrderActivity.class);
+        in.putExtra(DisplayOrderActivity.FILE_NAME, filename);
+        startActivity(in);
+    }
+
 
 
 }

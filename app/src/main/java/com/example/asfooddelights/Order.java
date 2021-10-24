@@ -9,19 +9,31 @@ public class Order implements Serializable {
     private ArrayList<String> sides = new ArrayList<String>();
     private String boxSize;
 
-    public void addOption(String opt){
+    public void setOption(String opt){
         this.option = opt;
     }
-    public void addMeat(String m){
+    public void setMeat(String m){
         this.meat = m;
     }
-    public void addSide(String s){
+    public void setSide(String s){
         if(s!=null){
             sides.add(s);
         }
     }
-    public void addBoxSize(String size){
+    public void setBoxSize(String size){
         this.boxSize = size;
+    }
+    public String getOption(){
+        return this.option;
+    }
+    public String getMeat(){
+        return this.meat;
+    }
+    public ArrayList<String> getSides(){
+        return this.sides;
+    }
+    public String getBoxSize(){
+        return this.boxSize;
     }
 
 
