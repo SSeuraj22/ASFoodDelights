@@ -46,12 +46,11 @@ public class Order implements Serializable {
                 "Side/s: ";
         for(String s: sidesList){
             if(sidesList.get(size-1)==s){
-                st = st + s + "\n";
+                st = st + s;
             }
             else{
                 st = st + s + ", ";
             }
-
         }
         return st;
     }
