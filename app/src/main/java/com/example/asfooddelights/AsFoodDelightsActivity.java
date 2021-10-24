@@ -34,7 +34,7 @@ public class AsFoodDelightsActivity extends AppCompatActivity implements Seriali
     ArrayList<Order> custOrderList = new ArrayList<Order>();
     int count = 1;
 
-    public void onClickCustOrder(View view){
+    public void onClickCartOrder(View view){
         //Get reference to the spinner meat
         Spinner spin = (Spinner) findViewById(R.id.spinner_option);
         //Get the current selected item in the spinner
@@ -142,10 +142,12 @@ public class AsFoodDelightsActivity extends AppCompatActivity implements Seriali
         }
     }
 
-    public void onClickDisplayOrder(View view){
+    public void onClickCompleteOrder(View view){
         ArrayList<Order> cOrderList;
         FileInputStream inputFile = null;
         ObjectInputStream inputObject = null;
+
+        //Deserialization
         {
             try {
                 inputFile = new FileInputStream(filename);
@@ -163,6 +165,11 @@ public class AsFoodDelightsActivity extends AppCompatActivity implements Seriali
         Intent in = new Intent(this, CompleteOrderActivity.class);
         in.putExtra("ORDERS", (Serializable) custOrderList);
         startActivity(in);
+    }
+
+    public void onClickDisplayPastOrder(View view){
+
+
     }
 
 

@@ -45,34 +45,6 @@ public class CompleteOrderActivity extends AppCompatActivity implements Serializ
                 orderView.setText(list);
             }
         }
-
-
-
-        //Deserialization
-        /*try {
-            FileInputStream inputFile = new FileInputStream(nameFile);
-            ObjectInputStream inputObject = new ObjectInputStream(inputFile);
-            cOrderList = (ArrayList<Order>) inputObject.readObject();
-            for(Order orderCus: cOrderList){
-                if(orderCus!=null){
-                    //list += "ORDER #" + sizeOderList + "\n";
-                    String opt = orderCus.getOption();
-                    list = list + "Option: " + opt + "\n";
-                    orderView.setText(list);
-                }
-            }
-            inputObject.close();
-            inputFile.close();
-        }
-        catch (IOException as) {
-            as.printStackTrace();
-        }
-        catch (ClassNotFoundException sa){
-            sa.printStackTrace();
-        }*/
-
-
-
     }
 
 
