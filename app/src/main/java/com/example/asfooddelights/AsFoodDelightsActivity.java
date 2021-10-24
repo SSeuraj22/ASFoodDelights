@@ -121,6 +121,7 @@ public class AsFoodDelightsActivity extends AppCompatActivity implements Seriali
                 cartToast.show();
             }
         }
+        customerOrder = new Order();
     }
 
     //To serialize object
@@ -135,7 +136,7 @@ public class AsFoodDelightsActivity extends AppCompatActivity implements Seriali
             outputObject  = new ObjectOutputStream(outputFile);
             outputObject.writeObject(custOrderList);
             outputObject.close();
-            //outputFile.close();
+            outputFile.close();
         } catch (IOException as) {
             as.printStackTrace();
         }
@@ -151,7 +152,7 @@ public class AsFoodDelightsActivity extends AppCompatActivity implements Seriali
                 inputObject = new ObjectInputStream(inputFile);
                 custOrderList = (ArrayList<Order>) inputObject.readObject();
                 inputObject.close();
-                //inputFile.close();
+                inputFile.close();
             } catch (IOException as) {
                 as.printStackTrace();
             } catch (ClassNotFoundException sa) {
